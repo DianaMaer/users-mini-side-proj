@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 
-function App() {
+const App = () =>{
+  const [user, seTUser] = useState(null);
+
+  //return the users from the api
+  const fetchUsers = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(resp => resp.json())
+        .then(data => console.log(data))
+  }
+
+  //call the api in componentDidMount
+  useEffect(fetchUsers, []);
+
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Test
     </div>
   );
 }
